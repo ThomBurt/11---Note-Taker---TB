@@ -1,12 +1,12 @@
 const express = require('express');
 const path = require('path');
-//const apiRoutes = require('./routes/apiRoute');
+const apiRoutes = require('./routes/apiRoute');
 const htmlRoutes = require('./routes/htmlRoute');
 
 // Helper method for generating unique ids
 const uuid = require('./helpers/uuid');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // initializes express
 const app = express();
@@ -38,7 +38,7 @@ app.get('/api/db', (req, res) => {
 
 
 // TODO Make these files and routes
- // require('/api', apiRoutes);
+ app.use('/api', apiRoutes);
  app.use('/', htmlRoutes);
 
 

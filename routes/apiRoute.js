@@ -1,26 +1,25 @@
-// GET request for reviews
-app.get('/api/db', (req, res) => {
-    // Send a message to the client
-    res.json(`${req.method} request received to get the database`);
-  
-    // Log our request to the terminal
-    console.info(`${req.method} request received to get database`);
+const router = require('express').Router();
+const notesDataBase = require('../db/db.json')
+const uuid = require('uuid');
+const fs = require('fs');
+
+// GET request for notes
+  router.get('/notes', (req, res) => {
+    console.log('You are executing a GET request for notes');
+
+    let data = fs.readFileSync("./db/db.json", "utf8");
+
+    res.json(JSON.parse(data));
   });
   
-  // GET request for a single review
-  app.get('/api/db/:db_id', (req, res) => {
-    if (req.body && req.params.db_id) {
-      console.info(`${req.method} request received to get a single a review`);
-      const reviewId = req.params.db_id;
-      for (let i = 0; i < db.length; i++) {
-        const currentNote = db[i];
-        if (currentNote.db_id === dbId) {
-          res.json(currentNote);
-          return;
-        }
-      }
-      res.json('Note ID not found');
-    }
-  });
+// Post request for notes
+//   router.post('/notes'), (req, res) => {
+//     const newNote = {
+//         ...req.body,
+//         id: uuid()
+//     }
+// }
+
+module.exports = router;
   
   
