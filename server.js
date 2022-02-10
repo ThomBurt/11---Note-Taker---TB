@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 
+// Helper method for generating unique ids
+const uuid = require('./helpers/uuid');
+
 const PORT = 3001;
 
 // initializes express
@@ -19,6 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public'))
 );
+
+// TODO Make these files and routes
+require("./routes/apiRoute.js")(app);
+require("./routes/htmlRoute.js")(app);
 
 
 

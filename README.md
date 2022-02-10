@@ -3,3 +3,4 @@
 # NPM installs:
 - Express
 - Nodemon
+- UUID
