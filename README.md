@@ -10,6 +10,14 @@
 https://tranquil-ravine-24692.herokuapp.com/ | https://git.heroku.com/tranquil-ravine-24692.git
 
 
+# Project Description
+
+This project is a note taking app, that allows the user to create, save and delete notes, much like the notes app on your mobile device.
+
+The note frontend is connected to the server backend which is running the code to manage the database.
+
+
+<img src="images\app screenshot.png" alt="Note Taker" width="512" height="240">
 
 
 # Acceptance Criteria
