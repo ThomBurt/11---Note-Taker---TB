@@ -26,15 +26,6 @@ app.get('/', (req, res) =>
 );
 
 
-// GET request for reviews
-app.get('/api/db', (req, res) => {
-    // Send a message to the client
-    res.json(`${req.method} request received to get the database`);
-  
-    // Log our request to the terminal
-    console.info(`${req.method} request received to get database`);
-  });
-
 
 
 // TODO Make these files and routes
