@@ -17,6 +17,10 @@ This project is a note taking app, that allows the user to create, save and dele
 The note frontend is connected to the server backend which is running the code to manage the database.
 
 
+# instructions
+When first opening the code, run 'npm i' to download the dependencies.
+
+
 <img src="images\app screenshot.png" alt="Note Taker" width="512" height="240">
 
 
