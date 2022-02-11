@@ -2,7 +2,6 @@ const router = require('express').Router();
 const notesDataBase = require('../db/db.json')
 const uuid = require('../helpers/uuid');
 const fs = require('fs');
-// const index = require('../public/assets/js/index')
 
 //const store = require('../db/store');
 
@@ -54,7 +53,7 @@ const fs = require('fs');
 
 
     //   DELETE NOTE
-  router.delete("/api/notes.id", (req, res) => {
+  router.delete("/api/notes/:id", (req, res) => {
         // read file
         let data = fs.readFileSync("./db/db.json", "utf8");
 
@@ -63,8 +62,8 @@ const fs = require('fs');
 
         // if newNotes has a false value, use filter method and req.params
 
-        const newNotes = dataJSON.filter((note) => {
-        return note.id !== req.params.id;
+        const newNotes = dataJSON.filter((data) => {
+        return data.id !== req.params.id;
         });
         // console.log(req.params)
         
@@ -73,9 +72,11 @@ const fs = require('fs');
             console.error(err);
             return;
             }
+            console.log (data.title + 'Removed from notes');
         });
 
         res.json(newNotes);
+
   });
 
 
@@ -97,6 +98,19 @@ const fs = require('fs');
 
     
 //     });
+
+
+
+// // DELETE "/api/notes" deletes the note with an id equal to req.params.id
+// router.delete("/notes/:id", function(req, res) {
+//     store
+//       .removeNote(req.params.id)
+//       .then(() => res.json({ ok: true }))
+//       .catch(err => res.status(500).json(err));
+//   });
+
+
+
 
     
 module.exports = router;
