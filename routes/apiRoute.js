@@ -51,63 +51,51 @@ const fs = require('fs');
   });
 
 
-
-    //   DELETE NOTE
-  router.delete("/api/notes/:id", (req, res) => {
-        // read file
-        let data = fs.readFileSync("./db/db.json", "utf8");
-
-        // variable for setting up the filter method
-        const dataJSON = JSON.parse(data);
-
-        // if newNotes has a false value, use filter method and req.params
-
-        const newNotes = dataJSON.filter((data) => {
-        return data.id !== req.params.id;
-        });
-        // console.log(req.params)
-        
-        fs.writeFile( "./db/db.json",JSON.stringify(newNotes),(err, text) => {
-            if (err) {
-            console.error(err);
-            return;
-            }
-            console.log (data.title + 'Removed from notes');
-        });
-
-        res.json(newNotes);
-
+  router.delete('/notes/:id', (req, res) => {
+    let notes = fs.readFileSync('./db/db.json', 'utf8');
+    const parsedNotes = JSON.parse(notes);
+  
+    const updatedNotes = parsedNotes.filter((note) => {
+      return note.id !== req.params.id;
+    });
+  
+    fs.writeFile('./db/db.json', JSON.stringify(updatedNotes),(err, text) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+    });
+    res.json(updatedNotes);
   });
 
 
-//   router.delete('api/notes/:id', function(req, res) {
-//     let data = fs.readFileSync("./db/db.json", "utf8");
-//     let dataJSON = JSON.parse(data);
-//     var indexOfJSON = dataJSON.map(function(item) { return notes.id; }).indexOf(req.params.id); //find the index of :id
-//       if(indexOfJSON === -1) {
-//         res.statusCode = 404;
-//         return res.send('Error 404: No quote found');
-//       }
-    
-//       var result = json.splice(indexOfJSON,1);
-//       fs.writeFile(jsonFilePath, JSON.stringify(result), function(err){
-//        if(err) throw err;
-//        res.json(true);
-//        console.log('trying to delete')
-//      });
+//     //   DELETE NOTE
+//   router.delete("/api/notes/:id", (req, res) => {
+//         // read file
+//         let data = fs.readFileSync("./db/db.json", "utf8");
 
-    
-//     });
+//         // variable for setting up the filter method
+//         const dataJSON = JSON.parse(data);
 
+//         // if newNotes has a false value, use filter method and req.params
 
+//         const newNotes = dataJSON.filter((data) => {
+//         return data.id !== req.params.id;
+//         });
+//         // console.log(req.params)
+        
+//         fs.writeFile( "./db/db.json",JSON.stringify(newNotes),(err, text) => {
+//             if (err) {
+//             console.error(err);
+//             return;
+//             }
+//             console.log (data.title + 'Removed from notes');
+//         });
 
-// // DELETE "/api/notes" deletes the note with an id equal to req.params.id
-// router.delete("/notes/:id", function(req, res) {
-//     store
-//       .removeNote(req.params.id)
-//       .then(() => res.json({ ok: true }))
-//       .catch(err => res.status(500).json(err));
+//         res.json(newNotes);
+
 //   });
+
 
 
 

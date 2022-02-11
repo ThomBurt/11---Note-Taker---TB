@@ -1,16 +1,1 @@
-[
-    {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "Hello World",
-        "text": "This is test number 1",
-        "id": "c7c2"
-    },
-    {
-        "title": "Goodbye WORLD",
-        "text": "This is test 2",
-        "id": "b17b"
-    }
-]
+[{"title":"Test Title","text":"Test text"}]
