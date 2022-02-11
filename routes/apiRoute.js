@@ -54,46 +54,49 @@ const fs = require('fs');
 
 
     //   DELETE NOTE
-//   router.delete("/api/notes.id", (req, res) => {
-//         // read file
-//         let data = fs.readFileSync("./db/db.json", "utf8");
+  router.delete("/api/notes.id", (req, res) => {
+        // read file
+        let data = fs.readFileSync("./db/db.json", "utf8");
 
-//         // variable for setting up the filter method
-//         const dataJSON = JSON.parse(data);
+        // variable for setting up the filter method
+        const dataJSON = JSON.parse(data);
 
-//         // if newNotes has a false value, use filter method and req.params
+        // if newNotes has a false value, use filter method and req.params
 
-//         const newNotes = dataJSON.filter((note) => {
-//         return note.id !== req.params.id;
-//         });
-//         // console.log(req.params)
+        const newNotes = dataJSON.filter((note) => {
+        return note.id !== req.params.id;
+        });
+        // console.log(req.params)
         
-//         fs.writeFile( "./db/db.json",JSON.stringify(newNotes),(err, text) => {
-//             if (err) {
-//             console.error(err);
-//             return;
-//             }
-//         });
+        fs.writeFile( "./db/db.json",JSON.stringify(newNotes),(err, text) => {
+            if (err) {
+            console.error(err);
+            return;
+            }
+        });
 
-//         res.json(newNotes);
-//   });
+        res.json(newNotes);
+  });
 
 
-  router.delete('api/notes/:id', function(req, res) {
-    let data = fs.readFileSync("./db/db.json", "utf8");
-    var indexOfJSON = json.map(function(item) { return notes.id; }).indexOf(req.params.id); //find the index of :id
-      if(indexOfJSON === -1) {
-        res.statusCode = 404;
-        return res.send('Error 404: No quote found');
-      }
+//   router.delete('api/notes/:id', function(req, res) {
+//     let data = fs.readFileSync("./db/db.json", "utf8");
+//     let dataJSON = JSON.parse(data);
+//     var indexOfJSON = dataJSON.map(function(item) { return notes.id; }).indexOf(req.params.id); //find the index of :id
+//       if(indexOfJSON === -1) {
+//         res.statusCode = 404;
+//         return res.send('Error 404: No quote found');
+//       }
     
-      var result = json.splice(indexOfJSON,1);
-      fs.writeFile(jsonFilePath, JSON.stringify(result), function(err){
-       if(err) throw err;
-       res.json(true);
-     });
+//       var result = json.splice(indexOfJSON,1);
+//       fs.writeFile(jsonFilePath, JSON.stringify(result), function(err){
+//        if(err) throw err;
+//        res.json(true);
+//        console.log('trying to delete')
+//      });
+
     
-    });
+//     });
 
     
 module.exports = router;
