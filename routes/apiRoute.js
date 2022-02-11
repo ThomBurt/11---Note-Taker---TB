@@ -8,29 +8,20 @@ const fs = require('fs');
 
 // GET request for notes
   router.get('/notes', (req, res) => {
-    console.log('You are executing a GET request for notes');
+   // console.log('You are executing a GET request for notes');
 
     let data = fs.readFileSync("./db/db.json", "utf8");
 
     res.json(JSON.parse(data));
   });
 
-
+// POST METHOD
  router.post('/notes', (req, res) => {
-    // store new notes from body with req.body and id into an object
-    // console.log(req.body);
-    // res.json(req.body);
-    // addNote(req.body);
-    // then((note) => res.json(note))
-    // .catch((err) => res.status(500).json(err))
-
-
     const newNote = {
         ...req.body,
         id: uuid(),
       };
   
-      console.log("Post Request for new notes");
       console.log(req.body);
   
       //  Read data from JSON file
@@ -61,7 +52,7 @@ const fs = require('fs');
   });
 
  //   API DELETE Request
- router.delete("/api/notes/:id", (req, res) => {
+ router.delete("/api/notes.id", (req, res) => {
     // read file
     let data = fs.readFileSync("./db/db.json", "utf8");
 
