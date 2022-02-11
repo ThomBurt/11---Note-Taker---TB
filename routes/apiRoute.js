@@ -79,7 +79,7 @@ const fs = require('fs');
 //   });
 
 
-  router.delete('api//notes/:id', function(req, res) {
+  router.delete('api/notes/:id', function(req, res) {
     let data = fs.readFileSync("./db/db.json", "utf8");
     var indexOfJSON = json.map(function(item) { return notes.id; }).indexOf(req.params.id); //find the index of :id
       if(indexOfJSON === -1) {
